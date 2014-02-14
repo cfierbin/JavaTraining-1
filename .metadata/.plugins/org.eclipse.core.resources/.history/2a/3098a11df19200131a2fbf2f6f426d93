@@ -1,0 +1,4 @@
+
+public class NJTax extends Tax {
+
+}

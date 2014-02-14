@@ -1,0 +1,14 @@
+public class TestTax {
+
+	public static void main(String[] args) {
+
+		Tax tax = new Tax(30000, "NY", 3);
+		tax.printInformation();
+		System.out.println("Tax in EUR is ˆ"+ CurrencyConverter.fromUSDToEUR(tax.calcTax()));
+
+		NJTax njTax = new NJTax(30000, 3);
+		njTax.printInformation();
+
+	}
+
+}

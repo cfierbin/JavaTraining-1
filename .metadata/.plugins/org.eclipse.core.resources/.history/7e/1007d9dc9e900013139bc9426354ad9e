@@ -1,0 +1,35 @@
+  import com.google.gson.Gson;
+  import java.io.BufferedReader;
+  import java.io.InputStreamReader;
+  import java.net.URL;
+  import java.net.URLConnection;
+
+  public class TestExchangeRate {
+    public static void main(String[] args) throws Exception {
+        URL url = new URL("http://rate-exchange.appspot.com/currency?from=USD&to=EUR");
+        URLConnection yc = url.openConnection();
+        BufferedReader in = new BufferedReader(
+                            new InputStreamReader(
+                            yc.getInputStream()));
+        String jsonObject = "";
+        String line;
+        while ((line = in.readLine()) != null) 
+            jsonObject += line;
+
+        in.close();
+
+        Gson gson = new Gson();
+        CurrencyRate currencyRate = gson.fromJson(jsonObject, CurrencyRate.class);
+        currencyRate.print();
+        
+        System.out.printf("\nCurrency ratet is f%2.2"+currencyRate.getValue());
+        
+        
+    }
+
+  }
+
+
+ 
+  
+  

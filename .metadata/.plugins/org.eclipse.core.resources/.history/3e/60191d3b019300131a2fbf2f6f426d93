@@ -1,0 +1,19 @@
+public class TestTax {
+
+	public static void main(String[] args) {
+
+		System.out.println("---------------------------------");
+		System.out.println("Last rates: ");
+		System.out.println("1 EUR : $"+ Config.EUR_USD_RATE);
+		System.out.println("1 USD : ˆ"+ Config.USD_EUR_RATE);
+		System.out.println("---------------------------------");
+		
+		Tax tax = new Tax(65000, "TX", 2);
+		tax.printInformation();
+
+		NJTax njTax = new NJTax(29000, 2);
+		njTax.printInformation();
+
+	}
+
+}

@@ -1,0 +1,15 @@
+
+public class NJTax extends Tax {
+	
+	public NJTax(double grossIncome, String state, int dependents) {
+		super(grossIncome, state, dependents);
+	}
+
+	public double adjustForStudents (double stateTax){
+		double adjustedTax = stateTax - 500;
+		return adjustedTax;
+	}
+	
+	
+
+}

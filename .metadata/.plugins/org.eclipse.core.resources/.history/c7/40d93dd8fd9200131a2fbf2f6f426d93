@@ -1,0 +1,17 @@
+public class TestTax {
+
+	public static void main(String[] args) {
+
+		
+		System.out.println("Currency rate EUR/USD is "+ Config.EUR_USD_RATE);
+		System.out.println("Currency rate USD/EUR is "+ Config.USD_EUR_RATE);
+		
+		Tax tax = new Tax(30000, "NY", 3);
+		tax.printInformation();
+
+		NJTax njTax = new NJTax(30000, 3);
+		njTax.printInformation();
+
+	}
+
+}

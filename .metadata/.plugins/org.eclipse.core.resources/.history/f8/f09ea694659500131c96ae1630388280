@@ -1,0 +1,14 @@
+
+public class Test1 {
+	
+	public int a;
+
+	
+	
+	public Test1(int a){
+		this.a = a;
+	}
+	
+	
+	
+}

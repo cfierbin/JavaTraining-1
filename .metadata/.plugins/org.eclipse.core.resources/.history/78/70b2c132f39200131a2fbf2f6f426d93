@@ -1,0 +1,13 @@
+
+public class TestTax {
+
+	public static void main(String[] args) {
+		
+		
+		Tax tax = new Tax(30000,"NY",3);
+		tax.printInformation();
+		
+
+	}
+
+}

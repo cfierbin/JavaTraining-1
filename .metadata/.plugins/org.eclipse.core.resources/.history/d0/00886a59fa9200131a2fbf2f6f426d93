@@ -1,0 +1,15 @@
+
+public class CurrencyConverter {
+	
+	static double fromUSDToEUR(double amountUSD){
+		return amountUSD * Config.EUR_USD_RATE;
+	}
+	
+	
+	static double fromEURToUSD(double amountEUR){
+		return abountEur * Config.USD_EUR_RATE;
+	}
+	
+	
+
+}

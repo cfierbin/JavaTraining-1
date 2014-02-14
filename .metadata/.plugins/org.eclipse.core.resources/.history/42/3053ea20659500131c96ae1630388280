@@ -1,0 +1,12 @@
+
+public class test2 extends test1 {
+	
+	
+	public test2(){
+		System.out.println("Hello");
+	}
+	
+	
+	
+
+}

@@ -1,0 +1,6 @@
+public class Config {
+
+	public final double EUR_USD_RATE = 1.25;
+	public final double USD_EUR_RATE = 1 / EUR_USD_RATE;
+
+}

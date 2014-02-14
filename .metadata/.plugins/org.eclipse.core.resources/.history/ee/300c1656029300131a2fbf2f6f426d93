@@ -1,0 +1,23 @@
+package com.practivaljava.unit2;
+
+public class NJTax extends Tax {
+
+	public NJTax(double grossIncome, int dependents) {
+		super(grossIncome, "NJ", dependents);
+	}
+
+	public double adjustForStudents(double stateTax) {
+		double adjustedTax = stateTax - 500;
+		return adjustedTax;
+	}
+
+	public void printInformation() {
+		System.out.println("State is " + state);
+		System.out.println("Count of dependents is " + dependents);
+		double tax = calcTax();
+		double njTax = adjustForStudents(tax);
+		System.out.printf("Tax is $%.2f (ˆ%.2f)\n", njTax,
+				CurrencyConverter.fromUSDToEUR(njTax));
+		System.out.println("---------------------------------");
+	}
+}
