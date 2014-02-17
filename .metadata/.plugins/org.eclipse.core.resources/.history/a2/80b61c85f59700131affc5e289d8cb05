@@ -1,0 +1,12 @@
+
+public class TestSomething {
+
+	public static void main(String[] args) {
+		
+		
+		String a = new String("Natasha");
+		String b = new String("Natasha");
+		
+	}
+
+}
