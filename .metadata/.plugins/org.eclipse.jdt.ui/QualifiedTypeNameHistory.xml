@@ -13,4 +13,7 @@
 <fullyQualifiedTypeName name="com.practivaljava.unit2.Tax"/>
 <fullyQualifiedTypeName name="com.practivaljava.unit2.Config"/>
 <fullyQualifiedTypeName name="Test2"/>
+<fullyQualifiedTypeName name="com.practicaljava.lesson6.Person"/>
+<fullyQualifiedTypeName name="com.practicaljava.lesson6.Employee"/>
+<fullyQualifiedTypeName name="com.practicaljava.lesson6.Contractor"/>
 </qualifiedTypeNameHistroy>
