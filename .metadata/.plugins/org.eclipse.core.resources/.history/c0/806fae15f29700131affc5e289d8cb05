@@ -1,0 +1,18 @@
+import com.practicaljava.lesson6.Employee;
+import com.practicaljava.lesson6.Person;
+import com.practicaljava.lesson6.Contractor;
+
+public class TestPayIncrease {
+
+	public static void main(String[] args) {
+
+		
+		Person workers[] = new Person[3];
+		
+		workers[0] = new Employee("John Rambo")
+		
+		
+		
+	}
+
+}
