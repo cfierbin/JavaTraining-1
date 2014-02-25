@@ -1,5 +1,8 @@
 package com.practicaljava.lesson6;
 
+/**
+ * @author Svyatoslav Strygin <svyatoslav.strygin@gmail.com>
+ */
 public class Contractor extends Person implements Payable {
 
 	public Contractor(String name) {
@@ -9,18 +12,12 @@ public class Contractor extends Person implements Payable {
 	@Override
 	public boolean increasePay(int percent) {
 
-		if (percent <= INCREASE_CAP) {
-			System.out.println("Increasing salary by " + percent + "%. "
-					+ getName());
+		System.out.println(
+				(percent <= INCREASE_CAP)  
+				?"Increasing salary by "+ percent + "%. " + getName()
+				:"Sorry, can't increase hourly rate by more than " + INCREASE_CAP + ". " + getName()
+		);
 
-			return true;
-		} else {
-
-			System.out
-					.println("Sorry, can't increase hourly rate by more than "
-							+ INCREASE_CAP + ". Person's name is " + getName());
-
-			return false;
-		}
+		return percent <= INCREASE_CAP;
 	}
 }

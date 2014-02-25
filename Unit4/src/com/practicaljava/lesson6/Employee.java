@@ -1,5 +1,8 @@
 package com.practicaljava.lesson6;
 
+/**
+ * @author Svyatoslav Strygin <svyatoslav.strygin@gmail.com>
+ */
 public class Employee extends Person implements Payable {
 
 	public Employee(String name) {

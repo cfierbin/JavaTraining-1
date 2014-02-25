@@ -1,7 +1,14 @@
+/**
+ * Demonstration of upcasting and downcasting in Java.
+ */
+
 import com.practicaljava.lesson6.Employee;
 import com.practicaljava.lesson6.Person;
 import com.practicaljava.lesson6.Contractor;
 
+/**
+ * @author Svyatoslav Strygin <svyatoslav.strygin@gmail.com>
+ */
 public class TestPayIncrease {
 	public static void main(String[] args) {
 
