@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import com.practicaljava.custom.IVoiceInput;
 import com.practicaljava.custom.LgNexus;
 import com.practicaljava.custom.MobilePhone;
@@ -19,19 +17,12 @@ public class TestMobliePhones {
 		mobilePhones[0] = new AppleIPhone();
 		mobilePhones[1] = new LgNexus();
 
-		List<IVoiceInput> voiceInputDevices = new ArrayList<IVoiceInput>();
-
 		for (MobilePhone mobilePhone : mobilePhones) {
 			mobilePhone.powerOn();
 			mobilePhone.runWebBrowser();
 			mobilePhone.openApplicationMarket();
-			voiceInputDevices.add((IVoiceInput) mobilePhone);
+			((IVoiceInput)mobilePhone).runVoiceListener();
 		}
-
-		for (IVoiceInput voiceInputDevice : voiceInputDevices) {
-			voiceInputDevice.runVoiceListener();
-		}
-
 	}
 
 }
