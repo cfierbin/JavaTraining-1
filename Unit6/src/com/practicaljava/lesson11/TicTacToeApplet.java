@@ -3,6 +3,8 @@ package com.practicaljava.lesson11;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Panel;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -56,6 +58,14 @@ public class TicTacToeApplet extends JApplet implements MouseListener {
 		defaultColor = restartButton.getBackground();
 		buttonsPanel.add(restartButton);
 		enableAI = new JCheckBox("Enable AI in Player O");
+		enableAI.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (playerName == PLAYERO)
+					decideByAI();
+			}
+		});
+		
 		buttonsPanel.add(enableAI);
 		
 		add(buttonsPanel);
