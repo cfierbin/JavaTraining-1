@@ -6,19 +6,19 @@ import java.awt.Panel;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-
+import javax.swing.event.MouseInputAdapter;
 import java.util.ArrayList;
 import java.util.Random;
 
-
-public class TicTacToeApplet extends JApplet implements MouseListener {
+/**
+ * @author Svyatoslav Strygin <svyatoslav.strygin@gmail.com>
+ */
+public class TicTacToe extends MouseInputAdapter {
 	private static final String PLAYERX = "Player X";
 	private static final String PLAYERO = "Player O";
 	private String playerName = PLAYERX;
@@ -28,12 +28,12 @@ public class TicTacToeApplet extends JApplet implements MouseListener {
 	private Panel buttonsPanel;
 	private JButton restartButton;
 	private JCheckBox enableAI;
-	private Color winColor = new Color(255,0,0); //Red color
+	private Color winColor = new Color(127,255,0); //Green color
 	private Color defaultColor;
 	
 	private Random random = new Random();
 	
-	public void init() {
+	public TicTacToe() {
 		initComponents();
 	}
 
@@ -53,10 +53,12 @@ public class TicTacToeApplet extends JApplet implements MouseListener {
 
 		setPlayerName(PLAYERX);
 		buttonsPanel.add(playerNumber);
+		
 		restartButton = new JButton("Restart");
 		restartButton.addMouseListener(this);
-		defaultColor = restartButton.getBackground();
+		defaultColor = restartButton.getForeground();
 		buttonsPanel.add(restartButton);
+		
 		enableAI = new JCheckBox("Enable AI in Player O");
 		enableAI.addItemListener(new ItemListener() {
 			@Override
@@ -68,7 +70,11 @@ public class TicTacToeApplet extends JApplet implements MouseListener {
 		
 		buttonsPanel.add(enableAI);
 		
-		add(buttonsPanel);
+		JFrame mainWindow = new JFrame("Tic-Tac-Toe");
+		mainWindow.setContentPane(buttonsPanel);
+		mainWindow.pack();
+		mainWindow.setSize(400, 400);
+		mainWindow.setVisible(true);
 	}
 
 	private void setPlayerName(String playerName) {
@@ -79,7 +85,7 @@ public class TicTacToeApplet extends JApplet implements MouseListener {
 	private void reset() {
 		for (JButton button : buttons) {
 			button.setText("");
-			button.setBackground(defaultColor);
+			button.setForeground(defaultColor);
 		}
 		setPlayerName(PLAYERX);
 	}
@@ -97,7 +103,7 @@ public class TicTacToeApplet extends JApplet implements MouseListener {
 	
 	private void decideByAI() {
 
-		ArrayList<Integer> emptyButtons = new ArrayList<Integer>();
+		ArrayList<Integer> emptyButtons = new ArrayList<>();
 
 		for (int i = 0; i < buttons.length; i++) {
 			if (buttons[i].getText() == "") {
@@ -109,8 +115,8 @@ public class TicTacToeApplet extends JApplet implements MouseListener {
 
 		MouseEvent me = new MouseEvent(buttons[randomButtonIndex],
 				MouseEvent.MOUSE_CLICKED, System.currentTimeMillis(), 0,
-				buttons[random.nextInt(8)].getHeight() + 1,
-				buttons[random.nextInt(8)].getWidth() + 1, 
+				buttons[random.nextInt(8)].getHeight(),
+				buttons[random.nextInt(8)].getWidth(), 
 				1, false);
 		buttons[random.nextInt(8)].dispatchEvent(me);
 	}
@@ -142,26 +148,12 @@ public class TicTacToeApplet extends JApplet implements MouseListener {
 		}
 	}
 	
-	public void mousePressed(MouseEvent e) {
-	}
-
-	public void mouseReleased(MouseEvent e) {
-	}
-
-	public void mouseEntered(MouseEvent e) {
-	}
-
-	public void mouseExited(MouseEvent e) {
-	}
-	
-	
-	private boolean setColorForThreeButtons(int buttonIndex1, int buttonIndex2, int buttonIndex3){
-		buttons[buttonIndex1].setBackground(winColor);
-		buttons[buttonIndex2].setBackground(winColor);
-		buttons[buttonIndex3].setBackground(winColor);
+	private boolean setColorForThreeButtons(int buttonIndex1, int buttonIndex2,int buttonIndex3) {
+		buttons[buttonIndex1].setForeground(winColor);
+		buttons[buttonIndex2].setForeground(winColor);
+		buttons[buttonIndex3].setForeground(winColor);
 		return true;
 	}
-	
 
 	private boolean findThreeInARow() {
 		
