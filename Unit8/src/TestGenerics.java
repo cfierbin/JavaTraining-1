@@ -34,21 +34,16 @@ public class TestGenerics {
 	}
 	
 	
-	public static <T> ArrayList<RetiredEmployee> GetRetiredEmployees (ArrayList<? extends Employee> listEmployees){
+	public static <T, E extends Employee> ArrayList<RetiredEmployee> GetRetiredEmployees (ArrayList<T> listEmployees){
 		
 		ArrayList<RetiredEmployee> listRetiredEmployees = new ArrayList<>();
 		
-		for (int i = 0; i < listEmployees.size(); i++) {
-			
-			@SuppressWarnings("unchecked")
-			T listItem = (T) listEmployees.get(i);
-			
-			if (listItem instanceof RetiredEmployee) {
-				
-				listRetiredEmployees.add((RetiredEmployee) listItem);
+		for (T employee : listEmployees) {
+			if (employee instanceof RetiredEmployee) {
+				listRetiredEmployees.add((RetiredEmployee) employee);
 			}
 		}
-		
+
 		return listRetiredEmployees;
 	}
 
