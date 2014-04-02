@@ -6,7 +6,6 @@ import javax.swing.*;
 
 import java.awt.GridLayout;
 import java.io.Externalizable;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -75,7 +74,7 @@ public class TaxGuiFile extends JFrame implements ActionListener,
 
 		} catch (FileNotFoundException e2) {
 			// TODO Auto-generated catch block
-			e2.printStackTrace();
+			System.out.println("Settings file not found. Set default settings");
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
