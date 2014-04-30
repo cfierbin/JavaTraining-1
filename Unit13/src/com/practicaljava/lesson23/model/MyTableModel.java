@@ -38,11 +38,11 @@ public class MyTableModel extends AbstractTableModel implements IQuoteStreamer {
 	public Object getValueAt(int row, int col) {
 
 		switch (col) {
-		case 0: // col 1
+		case 0: 
 			return myData.get(row).symbol;
-		case 1: // col 3
+		case 1: 
 			return myData.get(row).quantity;
-		case 2: // col 4
+		case 2: 
 			return myData.get(row).price;
 		default:
 			return "";
@@ -55,12 +55,6 @@ public class MyTableModel extends AbstractTableModel implements IQuoteStreamer {
 
 	public boolean isCellEditable(int row, int col) {
 		return false;
-	}
-
-	// Update the model when the use changes the quantity
-	public void setValueAt(Object value, int row, int col) {
-		TableModelEvent event = new TableModelEvent(this, row,row, col);
-		fireTableChanged(event);
 	}
 
 	@Override
