@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+
+.symbol-label label{
+	font-style : bold;
+	color: black;
+	float: left;
+	margin-top: 2px;
+}
+
+.symbol-input input{
+	width: 50px;
+	margin-left: 10px;
+	float:left;
+}
+
+.symbol-data {
+	font-size: 10pt;
+}
+
+.symbol-data th {
+		border: 1px solid;
+		text-align: center;
+		display: inline-block;
+		margin-left: -1px;
+		width:65px;
+		
+}
+
+.symbol-data td:FIRST-CHILD {
+	text-align: center;
+}
+
+.symbol-data td {
+		text-align: right;
+		display: inline-block;
+		width:65px;
+}
+
+.add-button{
+}
+
+
+
+
+
