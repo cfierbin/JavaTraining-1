@@ -10,7 +10,6 @@ public class QuoteModel {
 	public int quantity;
 	public double price;
 	
-	
 	public QuoteModel(String symbol, int quantity, double price){
 		this.symbol = symbol;
 		this.quantity = quantity;
@@ -23,7 +22,7 @@ public class QuoteModel {
 	
 	public String toJSON()
 	{
-		return "{\"Quote\":{\"symbol\":\"" + symbol + "\", \"quantity\":\"" + quantity + "\", \"price\":\"" + price + "\" }}";
+		return "{\"symbol\":\"" + symbol + "\", \"quantity\":\"" + quantity + "\", \"price\":\"" + price + "\" }";
 	} 
 
 }

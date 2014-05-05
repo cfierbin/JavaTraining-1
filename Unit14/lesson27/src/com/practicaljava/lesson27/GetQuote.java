@@ -2,6 +2,7 @@ package com.practicaljava.lesson27;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,12 +19,15 @@ import com.practicaljava.lesson27.model.QuoteModel;
 public class GetQuote extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private final String[] symbols = { "APPL", "GOOG", "MSFT", "YNDX", "IBM", "YHOO", "ORCL" };
+	private Random numericGenerator;
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public GetQuote() {
 		super();
-		// TODO Auto-generated constructor stub
+		numericGenerator = new Random();
 	}
 
 	/**
@@ -33,7 +37,12 @@ public class GetQuote extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		QuoteModel quote = new QuoteModel("MSFT", 100, 12.45);
+		// Create random quote
+		QuoteModel quote = new QuoteModel(symbols[numericGenerator.nextInt(7)],
+				numericGenerator.nextInt(100)+100, numericGenerator.nextDouble()
+						+ numericGenerator.nextInt(100) + 90);
+
+		// Send quote
 		PrintWriter out = response.getWriter();
 		out.println(quote.toJSON());
 	}

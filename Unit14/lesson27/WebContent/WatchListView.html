@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="styles/WatchList.css">
+<script src="scripts/lib/jquery-2.1.1.min.js"></script>
+<script src="scripts/lib/knockout-2.1.0.js"></script>
+<script src="scripts/lib/FormatUtil.js"></script>
+<script src="scripts/Streamer.js"></script>
+<script src="scripts/QuoteModel.js"></script>
+<script src="scripts/WatchList.js"></script>
+
+<meta charset="UTF-8">
+<title>Watch List</title>
+
+</head>
+
+<body>
+	<div id="watchListContainer">
+		<div class="symbol-label">
+			<label>Symbol:</label>
+		</div>
+		<div class="symbol-input">
+			<input id="autocompleter" type="text" />
+		</div>
+		<div class="add-button">
+			<input id="addSymbol" type="button" value="Add Symbol">
+		</div>
+		<div class="symbol-data">
+			<table>
+				<thead class="table-content-header">
+					<tr>
+						<th>Symbol</th>
+						<th>Price</th>
+						<th>Quantity</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: quotes">
+					<tr data-bind="attr:{class: textColor()}">
+						<td data-bind="text: symbol()"></td>
+						<td data-bind="text: FormatUtils.formatUSCurrency(price())"></td>
+						<td data-bind="text: FormatUtils.formatUSCurrency(quantity(),0)"></td>
+						<td class = "upDownImage"> <img src="img/red-triangle.jpg"> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	$(function() {
+
+		var watchListViewModel = new WatchListViewModel();
+		var streamer = new Streamer();
+		streamer.subscribe(watchListViewModel);
+
+		ko.applyBindings(watchListViewModel, document
+				.getElementById("watchListContainer"));
+
+		$("#addSymbol").on(
+				"click",
+				function() {
+					watchListViewModel.addSymbol($("#autocompleter").val()
+							.toUpperCase());
+				});
+		
+		watchListViewModel.onChange = function(){
+			$(".redColor img").attr("src","img/red-triangle.png");
+			$(".greenColor img").attr("src","img/green-triangle.png");
+			$(".blackColor img").attr("src","");
+		};
+
+		//watch default symbols
+		watchListViewModel.addSymbol("YNDX");
+		watchListViewModel.addSymbol("IBM");
+		watchListViewModel.addSymbol("YHOO");
+		watchListViewModel.addSymbol("ORCL");
+	});
+</script>
+
+
+</html>

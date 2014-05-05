@@ -1,5 +1,17 @@
 @CHARSET "UTF-8";
 
+.greenColor {
+	color: green;
+}
+
+.blackColor {
+	color: black;
+}
+
+.redColor {
+	color: red;
+}
+
 .symbol-label label{
 	font-style : bold;
 	color: black;
@@ -23,7 +35,6 @@
 		display: inline-block;
 		margin-left: -1px;
 		width:65px;
-		
 }
 
 .symbol-data td:FIRST-CHILD {
@@ -36,10 +47,7 @@
 		width:65px;
 }
 
-.add-button{
+.upDownImage {
+	margin-left: -185px;
 }
-
-
-
-
 

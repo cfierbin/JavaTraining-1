@@ -1,20 +1,39 @@
 /**
- * 
+ * Quote Streamer Client
  */
 
+var Streamer = function() {
 
-var Streamer = function(){
-	
-	this.subscribers = {};
-	
-	this.subscribe = function(subscriber){
-		//subscribers = 1;
+	var self = this;
+	self.subscribers = [];
+
+	self.subscribe = function(subscriber) {
+		self.subscribers.push(subscriber);
 	};
-	
-	this.getQuote = function(){
-		
-		return new QuoteModel("GOOG",12.33,100);
+
+	self.updateQuote = function() {
+		$.get("./GetQuote", function(quoteJSON) {
+
+			if (quoteJSON) {
+				var quote = $.parseJSON(quoteJSON);
+				console.log(quote);
+
+				if (self.subscribers && self.subscribers.length > 0) {
+					$.each(self.subscribers, function(index, subscriber) {
+						if (subscriber.updateQuote)
+							subscriber.updateQuote(quote);
+					});
+				}
+			}
+		});
 	};
-	
-	
+
+	self.start = function() {
+		window.setInterval(function() {
+			self.updateQuote();
+		}, 300);
+	};
+
+	self.start();
+
 };

@@ -1,7 +1,6 @@
 package com.practicaljava.lesson27;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FindBooks
  */
-@WebServlet("/book")
-public class FindBooks extends HttpServlet {
+@WebServlet("/WatchList")
+public class WatchList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindBooks() {
+    public WatchList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +27,7 @@ public class FindBooks extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("WatchList.html");
+		response.sendRedirect("WatchListView.html");
 	}
 
 	/**

@@ -1,11 +1,9 @@
 /**
- * 
+ * Observable Quote Model
  */
-
-var QuoteModel = function(symbol,price,quantity){
-	var self = this;
-	
-	self.symbol = symbol;
-	self.price = price;
-	self.quantity = quantity;
-}
+var ObservableQuoteModel = function(quote) {
+	this.symbol = ko.observable(quote.symbol);
+	this.price = ko.observable(quote.price);
+	this.quantity = ko.observable(quote.quantity);
+	this.textColor = ko.observable(quote.textColor);
+};
