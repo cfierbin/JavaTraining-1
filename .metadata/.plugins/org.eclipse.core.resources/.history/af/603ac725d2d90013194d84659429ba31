@@ -1,0 +1,24 @@
+package com.practicaljava.lesson27.jsf;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+
+import com.practicaljava.lesson27.beans.Quote;
+
+@Named("quoteController")
+@SessionScoped
+public class QuoteController implements Serializable {
+	
+    private List<Quote> items = null;
+
+	public List<Quote> getItems() {
+	        if (items == null) {
+	            items.add(new Quote("ORCL",10,75.00));
+	        }
+	        return items;
+	    }
+	
+}

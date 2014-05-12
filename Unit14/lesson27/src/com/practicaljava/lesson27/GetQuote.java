@@ -17,7 +17,7 @@ import com.practicaljava.lesson27.model.QuoteModel;
  */
 @WebServlet("/GetQuote")
 public class GetQuote extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+//	private static final long serialVersionUID = 1L;
 
 	private final String[] symbols = { "APPL", "GOOG", "MSFT", "YNDX", "IBM", "YHOO", "ORCL" };
 	private Random numericGenerator;
@@ -44,7 +44,8 @@ public class GetQuote extends HttpServlet {
 
 		// Send quote
 		PrintWriter out = response.getWriter();
-		out.println(quote.toJSON());
+//		out.println(quote.toJSON());
+		out.println("symbol: " + quote.symbol + " quantity: " + quote.quantity + " price: " + quote.price);
 	}
 
 }
