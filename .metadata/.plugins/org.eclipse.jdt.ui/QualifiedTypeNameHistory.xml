@@ -16,4 +16,15 @@
 <fullyQualifiedTypeName name="com.practicaljava.lesson6.Person"/>
 <fullyQualifiedTypeName name="com.practicaljava.lesson6.Employee"/>
 <fullyQualifiedTypeName name="com.practicaljava.lesson6.Contractor"/>
+<fullyQualifiedTypeName name="javax.faces.bean.RequestScoped"/>
+<fullyQualifiedTypeName name="com.practicaljava.lesson27.beans.Quote"/>
+<fullyQualifiedTypeName name="com.practicaljava.lesson27.model.QuoteModel"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.faces.component.UIComponent"/>
+<fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+<fullyQualifiedTypeName name="javax.inject.Named"/>
+<fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
 </qualifiedTypeNameHistroy>

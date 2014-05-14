@@ -1,0 +1,130 @@
+package com.practicaljava.lesson27.beans;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.inject.Named;
+
+//@Named("quoteTableBean")
+@ManagedBean(name="quoteTableBean")
+@RequestScoped
+public class QuoteTableBean implements Serializable {
+	
+	private Random numericGenerator;
+	
+	private List<QuoteBean> items;
+	
+	private List<ColumnModel> columns;
+	
+//	private final static String[] symbols;
+	
+    private String columnTemplate = "symbol quantity price";
+
+    private final static List<String> VALID_COLUMN_KEYS = 
+    		Arrays.asList("symbol", "quantity", "price");
+	/*
+	static {
+        symbols = new String[10];
+        symbols[0] = "ORCL";
+        symbols[1] = "AAPL";
+        symbols[2] = "MSFT";
+        symbols[3] = "YHOO";
+        symbols[4] = "IBM";
+        symbols[5] = "ORAN";
+        symbols[6] = "GOOG";
+        symbols[7] = "YNDX";
+        symbols[8] = "FB";
+        symbols[9] = "FBOK34.SA";
+    }
+	
+	*/
+	public QuoteTableBean(){
+ //       items = new ArrayList<QuoteBean>();       
+//        populateRandomQuotes(items, 7);
+	    columns = new ArrayList<ColumnModel>();
+        createDynamicColumns();
+	}
+	
+    private void populateRandomQuotes(List<QuoteBean> list, int size) {
+        for(int i = 0 ; i < size ; i++)
+            list.add(new QuoteBean("AAPL", getRandomQuantity(), getRandomPrice()));
+    }
+    
+    private int getRandomQuantity() {
+        return numericGenerator.nextInt(100)+100;
+    }
+    
+    private double getRandomPrice() {
+        return numericGenerator.nextDouble()
+				+ numericGenerator.nextInt(100) + 90;
+    }
+
+	public List<QuoteBean> getItems() {
+		return items;
+	}
+
+	public void setItems(List<QuoteBean> items) {
+		this.items = items;
+	}
+	
+	
+	static public class ColumnModel implements Serializable {
+		 
+        private String header;
+        private String property;
+ 
+        public ColumnModel(String header, String property) {
+            this.header = header;
+            this.property = property;
+        }
+ 
+        public String getHeader() {
+            return header;
+        }
+ 
+        public String getProperty() {
+            return property;
+        }
+    }
+     
+    public String getColumnTemplate() {
+        return columnTemplate;
+    }
+    public void setColumnTemplate(String columnTemplate) {
+        this.columnTemplate = columnTemplate;
+    }
+     
+    public void updateColumns() {
+        //reset table state
+        //UIComponent table = FacesContext.getCurrentInstance().getViewRoot().findComponent(":form:cars");
+        //table.setValueExpression("sortBy", null);
+         
+        //update columns
+        createDynamicColumns();
+    }
+     
+    public void createDynamicColumns() {
+    	/*
+        String[] columnKeys = columnTemplate.split(" ");
+        columns.clear();      
+         
+        for(String columnKey : columnKeys) {
+            String key = columnKey.trim();
+             
+            if(VALID_COLUMN_KEYS.contains(key)) {
+                columns.add(new ColumnModel(columnKey.toUpperCase(), columnKey));
+            }
+            */
+    	columns.add(new ColumnModel("SYMBOL","symbol"));
+    	
+        }
+    }
+

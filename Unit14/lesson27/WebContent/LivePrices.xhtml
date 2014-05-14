@@ -6,37 +6,29 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
+<h:head>
+</h:head>
+
+<h:body>
         
-      <h:outputText value="Live Prices"></h:outputText>  
-      
-      <h:outputText value="#{quote.symbol}"/>
-       
-      <h:form id="IndexForm">
-          <p:panel header="Live Prices Listing">
-                <h:outputText value="#{quote.symbol}"/>
-                    <p:dataTable id="datalist" value="#{quoteController.items}" 
-var="quote" rowKey="#{quote.symbol}" rows="10" paginator="true" rowsPerPageTemplate="10,20,30,40,50">
-                        <p:column>
-                            <f:facet name="symbol">
+<h:form id="form">
+                 
+    <h:panelGrid id="grid" columns="3" style="margin-bottom:10px">
+        <h:outputLabel for="template" value="Template:" style="font-weight:bold"/>
+        <p:inputText id="template" value="#{quoteTableBean.columnTemplate}" size="50"/>
+                <p:commandButton id="btn" update="quotes" actionListener="#{quoteTableBean.actionListener}" value="Update"/>
+    </h:panelGrid>
+ 
+     <p:dataTable id="quotes" var="quotes" value="#{quoteTableBean.items}">                  
+            <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="Symbol"/>
                             </f:facet>
-                            <h:outputText value="#{quote.symbol}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="price">
-                                <h:outputText value="Price"/>
-                            </f:facet>
-                            <h:outputText value="#{quote.price}"/>
-                        </p:column> 
-                        <p:column>
-                            <f:facet name="quantity">
-                                <h:outputText value="Quantity"/>
-                            </f:facet>
-                            <h:outputText value="#{quote.quantity}"/>
-                        </p:column>                 
-                    </p:dataTable>
-          </p:panel>
-      </h:form>
+                            <h:outputText value="#{quotes.symbol}"/>
+           </p:column>                   
+    </p:dataTable>
+ 
+</h:form>
         
-
+</h:body>
 </html>

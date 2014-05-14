@@ -1,0 +1,5 @@
+package com.practicaljava.lesson27.beans;
+
+public class TableBean {
+
+}

@@ -1,0 +1,3 @@
+INDEX VERSION 1.126
+D:\Svyatoslav\JavaTraining-1\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\386900009.index
+\lesson27\src

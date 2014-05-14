@@ -1,0 +1,50 @@
+package com.practicaljava.lesson27.beans;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+import com.practicaljava.lesson27.model.QuoteModel;;
+
+@ManagedBean(name="quote")
+@RequestScoped
+public class QuoteBean implements Serializable {
+	
+	private List<QuoteModel> items;
+	
+	public QuoteBean(){
+        items = new ArrayList<QuoteModel>();       
+        populateRandomQuotes(items, 7);
+        createDynamicColumns();
+	}
+	
+	public QuoteBean(String symbol, int quantity, double price){
+		this.symbol = symbol;
+		this.quantity = quantity;
+		this.price = price;
+	}
+	
+	public String getSymbol() {
+		return symbol;
+	}
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+
+}
